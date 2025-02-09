@@ -7,7 +7,7 @@ name = "ESPHome"
 description.en = "Build your own smart home devices using ESPHome"
 description.fr = "Créez vos propres appareils domestiques intelligents avec ESPHome"
 
-version = "2024.12.4~ynh1"
+version = "2024.12.4~ynh2"
 
 maintainers = ["WGrav01"]
 
@@ -44,6 +44,16 @@ ram.runtime = "30M"
     [install.init_main_permission]
     type = "group"
     default = "visitors"
+
+    [install.account_username]
+    ask.en = "(Optional) Enter a username to use with ESPHome."
+    optional = true
+    type = "string"
+
+    [install.account_password]
+    ask.en = "(Optional) Enter a password for use with ESPHome."
+    optional = true
+    type = "password"
 
 [resources]
 

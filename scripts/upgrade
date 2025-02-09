@@ -27,7 +27,7 @@ chown -R "$app:" "$install_dir"
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-ynh_config_add_systemd
+ynh_config_add --jinja --template="systemd.service" --destination="/etc/systemd/system/$app.service"
 
 ynh_config_add_nginx
 
@@ -46,6 +46,8 @@ chmod u+x "/usr/bin/esphome"
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
+systemctl daemon-reload
+ynh_systemctl --service="$app" --action="enable"
 ynh_systemctl --service="$app" --action="start"
 
 #=================================================
